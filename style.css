@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
+@import url('./fonts/icon-v1.0/style.css');
+
+:root {
+    --color_bg: #e0e5ec;
+    --gradient: linear-gradient(to right, #a993e7, #7e78ed);
+    --grey: #f0f0f0;
+
+}
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background-color: #e0e5ec;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.mobile {
+    width: 350px;
+    height: 700px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-rows: 48px 1fr 62px;
+}
+
+.mobile__top,
+.mobile__bottom {
+    align-self: center;
+    justify-self: center;
+}
+.mobile__content {
+    background: #fff;
+}
+
+.rooms {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 20px;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 14px ;
+}
+.room {
+    font-size: 16px;
+    display: grid;
+    grid-template-rows: 130px 36px;
+    text-align: center;
+    background: var(--grey);
+    border-radius: 12px;
+    cursor: pointer;
+}
+.room.selected {
+    background: var(--gradient);
+    color: white;
+}
+.room.selected i {
+    opacity: 1;
+}
+.room i {
+    font-size: 5em;
+    align-self: center;
+    opacity: 0.7;
+}
+/* Страниица настроек комнаты */
+.settings {
+    display: none;
+    padding: 0 20px;
+}
+.settings__tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 95px;
+    grid-gap: 14px;
+}
+.tab {
+    font-size: 12px;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    text-align: center;
+    background: var(--grey);
+    border-radius: 12px;
+    cursor: pointer;
+}
+.tab.selected {
+    background: var(--gradient);
+    color: white;
+}
+.tab.selected i {
+    opacity: 1;
+}
+.tab i {
+    font-size: 3em;
+    align-self: center;
+    opacity: 0.7;
+}
+
+/* Элементы настроек */
+.setting__screen{
+    display: none;
+}
+.setting__screen.selected{
+    display: block;
+}
+.setting__screen-title{
+    text-align: center;
+    margin: 30px 0 15px;
+    font-weight: 300;
+}
+.setting__screen-icon{
+    font-size: 30px;
+    text-align: center;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Кнопка регулировки температуры */
+.temperature-button {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+}
+.temperature-button__info{
+    position: relative;
+    font-size: 32px;
+    width: 70%;
+    height: 70%;
+    border-radius: 70%;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.temperature-button__info::before{
+    content: '';
+    display: block;
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    top: 4%;
+    bottom: 4%;
+    border-radius: 100%;
+    opacity: 0.3;
+    border: 1px solid black;
+}
+.dots-box {
+    transform: rotate(5deg);
+    transform-origin: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+.dots,
+.line,
+.line-active,
+.round,
+.separate-lines,
+.separate-dots {
+    fill: transparent;
+    stroke: var(--grey);
+    stroke-width: 3px;
+    stroke-linecap: round;
+    stroke-dasharray: 0 21;
+}
+.line,
+.line-active,
+.round{
+    stroke-width: 1px;
+    stroke-dasharray: 276 276;
+    transform: rotate(48deg);
+    transform-origin: center;
+}
+.line-active{
+    stroke: black ;
+    stroke-dasharray: 54 276; /*от 54 до 276*/
+}
+.round {
+    transform: rotate(-240deg); /* от -240 до 48 градусов*/
+    stroke-dasharray: 0 276;
+    stroke-width: 6px;
+}
+.separate-lines,
+.separate-dots {
+    stroke: white;
+    transform: rotate(60deg);
+    transform-origin: center;
+}
+.separate-dots {
+    stroke-dasharray: 40 313;
+}
+.separate-lines {
+    transform: rotate(49deg);
+    stroke-dasharray: 53 313;
+}
+/* Power */
+.power {
+    cursor: pointer;
+    background: var(--gradient);
+    color: white;
+    border-radius: 100%;
+    font-size: 24px;
+    margin: 0 auto;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding-bottom: 2px;
+
+}
+.power.off{
+    background: var(--grey);
+}
+.power-label {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 300;
+}
+.save-button{
+    cursor: pointer;
+    background: var(--gradient);
+    text-align: center;
+    color: white;
+    padding: 16px;
+    border-radius: 100px;
+    width: 250px;
+    margin: 15px auto 0;
+}
+/* Slider */
+.slider{
+    cursor: pointer;
+    width: 100px;
+    height: 250px;
+    margin: 0 auto;
+    background: var(--grey);
+    border-radius: 16px;
+    position: relative;
+    overflow: hidden;
+}
+.slider__progress{
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 45%;
+    min-height: 30px;
+    max-height: 100%;
+    background: var(--gradient);
+    color: white;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.slider__progress.grey{
+    background: #bbb;
+
+}
+.slider__progress span {
+    pointer-events: none;
+}
+/* Switch */
+.switch {
+    cursor: pointer;
+    width: 60px;
+    border-radius: 60px;
+    position: relative;
+    height: 28px;
+    background: var(--grey);
+    margin: 30px auto 0;
+}
+.switch.off div {
+    left: 0%;
+    background: #bbb;
+}
+.switch div {
+    position: absolute;
+    left: 52%;
+    top: 0;
+    background: var(--gradient);
+    width: 28px;
+    height: 28px;
+    border-radius: 100%;
+    transition: all .3s ease-in-out;
+}
+/* UI Components */
+.selectbox {
+    width: 143px;
+    cursor: pointer;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 25px;
+}
+.selectbox__selected {
+    font-size: 18px;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background-color: #fff;
+}
+.selectbox.open .ic_arrow {
+    transform: rotate(-180deg);
+}
+.ic_arrow {
+    display: inline-block;
+    font-size: 0.7em;
+    margin-left: 10px;
+    transform: rotate(0deg);
+    transition: all .3s ease-in-out;
+}
+.selectbox.open .selectbox__list{
+    top: 120%;
+    max-height: 200px;
+
+}
+
+.selectbox__list {
+    position: absolute;
+    top: 0;
+    left: -12px;
+    right: -12px;
+    z-index: 1;
+    max-height: 0;
+    overflow: hidden;
+    background-color: #fff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+}
+.selectbox__item {
+    cursor: pointer;
+}
+
+.selectbox__item.selected,
+.selectbox__item:hover{
+    color: #7e78ed;
+    font-weight: 600;
+}
+
+.selectbox__item:not(:last-child){
+    margin-bottom: 4px;
+}
